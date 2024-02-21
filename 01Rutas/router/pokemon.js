@@ -48,43 +48,63 @@ router.get("/:id", async (req, res) => {
      * Usammos Mongoose para buscar un único documento que coincide con el id indicado*/
     const pokemonDB = await Pokemon.findOne({ _id: id });
     console.log(pokemonDB); /**para probar por consola */
-    res.render("detalle", { /**Mostramos el obejto en la vista detalle */
-        pokemon: pokemonDB,
-        error: false
+    res.render("detalle", {
+      /**Mostramos el obejto en la vista detalle */ pokemon: pokemonDB,
+      error: false,
     });
   } catch (error) {
     /**Para la excepción si el id indicado no se encuentra */
     console.log("Se ha producido un erro", error);
     res.render("detalle", {
-        error: true,
-        message: 'Pokémon no encontrado!'
+      error: true,
+      message: "Pokémon no encontrado!",
     });
   }
 });
 
-// route.delete('/:id', async(req, res) => {
-//     const id= req.params.id;
-//     console.log('_id desde backend', id);
-//     try {
-//         const pokemonDB = await Pokemon.findByIdAndDelete({ _id: id});
-//         console.log(pokemonDB);
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log("_id desde backend", id);
+  try {
+    const pokemonDB = await Pokemon.findByIdAndDelete({ _id: id });
+    console.log(pokemonDB);
+    if (!pokemonDB) {
+      res.json({
+        estado: false,
+        message: "No se puede eliminar el Pokémon.",
+      });
+    } else {
+      res.json({
+        estado: true,
+        message: "Pokémon eliminado.",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-//         if (!pokemonDB) {
-//             res.json({
-//                 estado: false,
-//                 message: 'No se puede eliminar el Pokémon.'
-//             })
-//         } else {
-//             res.json({
-//                 estado: true,
-//                 message: 'Pokémon eliminado.'
-//             })
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }) 
-
-
+router.put("/:id", async (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+  console.log(id);
+  console.log("body", body);
+  try {
+    const pokemonDB = await Pokemon.findByIdAndUpdate(
+      id, body, {useFindAndModify: false}
+    )
+    console.log(pokemonDB)
+    res.json({
+      estado: true,
+      message: 'Pokémon editado'
+    })
+  } catch (error) {
+    console.log(error);
+    res.json({
+      estado: false,
+      message: 'Problema al editar el Pokémon'
+    })
+  }
+});
 
 module.exports = router;
