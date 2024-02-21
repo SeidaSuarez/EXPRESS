@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
     /**Loguardamos con el metodo save, gracias a Mongoose */
     await pokemonDB.save();
     /**Nos redirecciona a la vista del listado ya actualizada */
-    res.redirect("/Pokemon");
+    res.redirect("/pokemon");
   } catch (error) {
     console.error(error);
   }
@@ -84,7 +84,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put('/:id', async (req, res) => {
   const id = req.params.id;
   const body = req.body;
   console.log(id);

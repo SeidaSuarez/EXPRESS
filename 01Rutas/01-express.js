@@ -13,7 +13,7 @@ app.set("views", "./views/");
 
 app.use("/", require("./router/rutas"));
 
-app.use("/Pokemon", require("./router/Pokemon.js"));
+app.use("/pokemon", require("./router/pokemon.js"));
 
 require('dotenv').config();
 let port = process.env.PORT || 3000;
