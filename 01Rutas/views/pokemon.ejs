@@ -2,7 +2,17 @@
     <%- include("templates/header.ejs") %>
 
         <div class="container">
-            <h1>Pokémon</h1>
+            <div class="container">
+                <h1>Pokémon</h1>
+                <span class="fw-bold">Panel de Administración
+                    <button type="submit" class="btn btn-info btn-block">
+                        <a href="/crear" class="nav-link px-2 ">Agregar Pokémon
+                        </a>
+                    </button>
+                </span>
+                
+            </div>
+            
             <table class="table">
                 <thead>
                     <tr>
@@ -36,7 +46,9 @@
                                     <%= pokemon.descripcion %>
                                 </td>
                                 <td>
-                                    Editar Borrar
+                                   <a class="btn btn-warning btn-sm" href="Pokemon/<%= pokemon._id %>">
+                                    Editar / Eliminar
+                                   </a>
                                 </td>
                             </tr>
                         <% }) %>
