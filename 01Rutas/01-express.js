@@ -8,9 +8,6 @@ let bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json);
 
-require('dotenv').config();
-let port = process.env.PORT || 3000;
-
 app.set("view engine", "ejs");
 app.set("views", "./views/");
 
@@ -18,6 +15,8 @@ app.use("/", require("./router/rutas"));
 
 app.use("/pokemon", require("./router/pokemon.js"));
 
+require('dotenv').config();
+let port = process.env.PORT;
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 const dbname = process.env.DBNAME;
