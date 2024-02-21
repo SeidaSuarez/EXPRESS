@@ -1,0 +1,27 @@
+<%- include("templates/cabecera.ejs", {tituloWeb: 'Index'}) %>
+<%- include("templates/header.ejs") %>
+
+    <div class="px-4 py-5 my-5 text-center">
+        <img class="d-block mx-auto mb-4" src="https://icons.getbootstrap.com/assets/img/icons-hero.png" alt="" width="300" height="225">
+        <h1 class="display-5 fw-bold text-body-emphasis">
+            <%= titulo %>
+        </h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+                Ejemplpo de renderización de vistas en Expess.JS
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                    <a class="text-white" href="https://www.google.com/" target="_blank">Primary button</a>
+                </button>
+                <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+                    <a href="https://www.youtube.com/" target="_blank">Secondary</a>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <%- include("templates/footer.ejs") %>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<%- include("templates/cabecera.ejs", {tituloWeb: 'Panel de Administración' }) %>
+    <%- include("templates/header.ejs") %>
+
+        <div class="container">
+            <h1>Pokémon</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Acciones</th>
+                        <!-- Agrega aquí más encabezados de columna según necesites -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Si existen elementos en el array de Pokemon-->
+                    <% if(arrayPokemon.length> 0) { %>
+                        <!-- Definimos la tabla-->
+
+                        <!-- Recorrido foreach para el array de Pokémon -->
+                        <% arrayPokemon.forEach(pokemon=> { %>
+                            <!-- Aquí definimos las propiedades reales de nuestros objetos Pokémon -->
+                            <tr>
+                                <th scope="row">
+                                    <%= pokemon.id %>
+                                </th>
+                                <td>
+                                    <%= pokemon.nombre %>
+                                </td>
+                                <td>
+                                    <%= pokemon.tipo %>
+                                </td>
+                                <td>
+                                    <%= pokemon.descripcion %>
+                                </td>
+                                <td>
+                                    Editar Borrar
+                                </td>
+                            </tr>
+                        <% }) %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+<%- include("templates/footer.ejs") %>
