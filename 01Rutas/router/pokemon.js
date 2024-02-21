@@ -88,7 +88,7 @@ router.put("/:id", async (req, res) => {
   const id = req.params.id;
   const body = req.body;
   console.log(id);
-  console.log("body", body);
+  console.log('body', body);
   try {
     const pokemonDB = await Pokemon.findByIdAndUpdate(
       id, body, {useFindAndModify: false}
@@ -97,13 +97,13 @@ router.put("/:id", async (req, res) => {
     res.json({
       estado: true,
       message: 'Pokémon editado'
-    })
+    });
   } catch (error) {
     console.log(error);
     res.json({
       estado: false,
       message: 'Problema al editar el Pokémon'
-    })
+    });
   }
 });
 
